@@ -1,5 +1,6 @@
 
 import None from "../behavior/None.js"
+import Test from "../behavior/Test.js"
 
 class Agent {
   startX;
@@ -58,8 +59,10 @@ class Agent {
       //In this case we have to figure it out
       //The behavior is determined by the first word after the comma. Everything else can be a argument in the constructor
       let behave = splits[8].trim().toLowerCase();
-      if (behave == "queue")
-        this.behavior = new Queue(CrowdSimApp.query, CrowdSimApp.crowd, CrowdSimApp.agents, CrowdSimApp.ext, CrowdSimApp.filter);
+      // if (behave == "queue")
+      if (behave == "test")
+        //this.behavior = new Queue(CrowdSimApp.query, CrowdSimApp.crowd, CrowdSimApp.agents, CrowdSimApp.ext, CrowdSimApp.filter);
+        this.behavior = new Test(Agent.index++);
       else if (behave =="flee") {
         this.behavior = new PerfectFlee(Agent.index++, new Vector3(0, 0, 0));
       }
