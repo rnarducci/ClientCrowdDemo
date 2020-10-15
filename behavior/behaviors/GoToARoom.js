@@ -19,7 +19,7 @@ class GoToARoom {
 		//double distance =getObject().getLocation().distanceTo(location.getLocation());
         
         // **TEMPORARY**
-
+            // need to feed it coordinates somehow (especially so it can be used more than once)
         // **TEMPORARY**
 
         if(distance < 1)
