@@ -61,7 +61,6 @@
     
     let objFile = "./objs/hospital.obj";
 
-
     class App extends CrowdSimApp {
       currentMillisecond = 0;
       millisecondsBetweenFrames = 40; //40ms between frames, or 25fps
@@ -142,6 +141,9 @@
 
             // newDestination = new  (f[0], f[1], f[2]);
             if (newDestination != null) {
+              // throws error saying asArray is not a function when the new
+              // patient enters the simulation, but only when async and await
+              // is added to Test.js
               let checkTempName = newDestination.asArray();
               let nearest = query.findNearestPoly(newDestination.asArray(), ext, filter);
               this.crowd.requestMoveTarget(agent.idx, nearest.getNearestRef(), nearest.getNearestPos());
@@ -166,7 +168,9 @@
             let y = this.crowd.getAgent(idx).npos[1];
             let z = this.crowd.getAgent(idx).npos[2];
             // console.log(`${i} ${this.crowd.m_agents[0].boundary.m_center} ${this.crowd.m_agents[0].boundary.m_segs.length} ${x} ${y} ${z}`);
-            console.log(`${i} ${this.crowd.m_agents[0].boundary.m_center[0]} ${this.crowd.m_agents[0].boundary.m_center[2]} ${x} ${z}`);
+            
+            //commenting this out for testing
+            //console.log(`${i} ${this.crowd.m_agents[0].boundary.m_center[0]} ${this.crowd.m_agents[0].boundary.m_center[2]} ${x} ${z}`);
           }
 
         }

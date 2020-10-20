@@ -8,3 +8,5 @@ class WaitForever {
         return BehaviorTreeStatus.RUNNING;
     }
 }
+
+export default WaitForever;

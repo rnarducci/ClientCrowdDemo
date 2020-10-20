@@ -3,6 +3,8 @@ import GoToARoom from "./behaviors/GoToARoom.js"
 import TakeVitals from "./behaviors/TakeVitals.js"
 import WaitForever from "./behaviors/WaitForever.js"
 
+import GoToARoomTemp from "./behaviors/GoToARoomTemp.js"
+
 /**
  * Created by rnarducci on 10/13/2020.
  */
@@ -13,16 +15,16 @@ class Test extends ABehavior{
         super(myIndex);
 
         // EASY SAMPLE TREE
-        const builder = new BehaviorTreeBuilder();
+        const builder = new fluentBehaviorTree.BehaviorTreeBuilder();
         this.tree = builder
             .sequence("Idle")
-                .do("GoToARoom", async (t) => GoToARoom.execute())
+                .do("GoToARoom", async (t) => new GoToARoom().execute())
 
-                .do("TakeVitals", async (t) => TakeVitals.execute())
+                .do("TakeVitals", async (t) => new TakeVitals().execute())
 
-                .do("GoToARoom", async (t) => GoToARoom.execute())
+                .do("GoToARoomTemp", async (t) => new GoToARoomTemp().execute())
 
-                .do("waitForever", async (t) => WaitForever.execute())
+                .do("waitForever", async (t) => new WaitForever().execute())
 
             .end()
             .build();
@@ -47,7 +49,8 @@ class Test extends ABehavior{
     mainBehavior() {     
         
         // "await" keyword taken out, requires "async" function
-        this.tree.tick(new TimeData(deltaTime));
+        //console.log("I'm in the simulation!");
+        this.tree.tick(new fluentBehaviorTree.StateData(this.deltaTime));
         
         return null;
     }

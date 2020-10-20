@@ -25,8 +25,12 @@ class TakeVitals {
         // return Status.RUNNING;
         
 
-        // delay??? just for testing purposes
-        return BehaviorTreeStatus.Success;
+        // delay for testing purposes
+        setTimeout(function () {
+            return BehaviorTreeStatus.Success;
+        }, 5000);
+        
+        //return BehaviorTreeStatus.Success;
     }
 
     // protected Task copyTo(Task arg0) {
@@ -34,3 +38,5 @@ class TakeVitals {
 	// }
 
 }
+
+export default TakeVitals;
