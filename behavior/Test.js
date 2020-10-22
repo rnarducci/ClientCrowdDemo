@@ -18,11 +18,15 @@ class Test extends ABehavior{
         const builder = new fluentBehaviorTree.BehaviorTreeBuilder();
         this.tree = builder
             .sequence("Idle")
-                .do("GoToARoom", async (t) => new GoToARoom().execute())
+
+                // don't know if this should be async or the actual
+                // function in the class should be async
+                
+                //.do("GoToARoom", async (t) => new GoToARoom().execute())
 
                 .do("TakeVitals", async (t) => new TakeVitals().execute())
 
-                .do("GoToARoomTemp", async (t) => new GoToARoomTemp().execute())
+                //.do("GoToARoomTemp", async (t) => new GoToARoomTemp().execute())
 
                 .do("waitForever", async (t) => new WaitForever().execute())
 
@@ -50,6 +54,8 @@ class Test extends ABehavior{
         
         // "await" keyword taken out, requires "async" function
         //console.log("I'm in the simulation!");
+        
+        // this line might not be right
         this.tree.tick(new fluentBehaviorTree.StateData(this.deltaTime));
         
         return null;

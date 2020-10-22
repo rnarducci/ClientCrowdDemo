@@ -5,7 +5,7 @@
  */
 class WaitForever {
     execute(){
-        return BehaviorTreeStatus.RUNNING;
+        return fluentBehaviorTree.BehaviorTreeStatus.RUNNING;
     }
 }
 

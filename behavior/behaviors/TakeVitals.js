@@ -26,11 +26,10 @@ class TakeVitals {
         
 
         // delay for testing purposes
-        setTimeout(function () {
-            return BehaviorTreeStatus.Success;
-        }, 5000);
-        
-        //return BehaviorTreeStatus.Success;
+        // setTimeout(function () {
+        //     return BehaviorTreeStatus.Success;
+        // }, 5000);
+        return fluentBehaviorTree.BehaviorTreeStatus.Success;
     }
 
     // protected Task copyTo(Task arg0) {
